@@ -1,0 +1,12 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.item {
+  text-align: left;
+}
+
+.bold {
+  font-weight: 500;
+}

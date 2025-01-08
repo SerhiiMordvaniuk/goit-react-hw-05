@@ -10,13 +10,16 @@ axios.defaults.headers.common["accept"] = "application/json";
 
 const fetchMovie = async () => {
   const response = await axios.get("/trending/movie/day?language=en-US");
-  console.log(response);
-
   return response;
 };
 
 export const fetchMovieById = async (id) => {
   const response = await axios.get(`movie/${id}`);
+  return response.data;
+};
+
+export const fetchActorById = async (id) => {
+  const response = await axios.get(`movie/${id}/credits`);
   return response.data;
 };
 

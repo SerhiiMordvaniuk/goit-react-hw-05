@@ -1,0 +1,43 @@
+.wrapper {
+  padding-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.info {
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.genres {
+  display: flex;
+  gap: 6px;
+  font-weight: normal;
+}
+
+.txt {
+  font-weight: normal;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.additional {
+  text-align: left;
+}
+
+.list {
+  padding-left: 10px;
+}
