@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./Header.module.css";
+import s from "./Navigation.module.css";
 import { Route, Router, NavLink } from "react-router-dom";
 import clsx from "clsx";
 

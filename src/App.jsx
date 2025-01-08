@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import Header from "./components/Header/Header";
+import Navigation from "./components/Navigation/Navigation";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage";
@@ -10,7 +10,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 function App() {
   return (
     <>
-      <Header />
+      <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/movies" element={<MoviesPage />}></Route>
