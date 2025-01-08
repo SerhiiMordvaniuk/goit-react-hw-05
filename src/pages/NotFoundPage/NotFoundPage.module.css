@@ -1,0 +1,13 @@
+.not_found {
+}
+
+.number {
+  font-size: 128px;
+  color: red;
+}
+
+.txt {
+  font-size: 64px;
+  text-transform: uppercase;
+  color: red;
+}

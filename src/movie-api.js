@@ -9,8 +9,15 @@ axios.defaults.headers.common["Authorization"] = "Bearer " + TOKEN;
 axios.defaults.headers.common["accept"] = "application/json";
 
 const fetchMovie = async () => {
-  const response = axios.get("/trending/movie/day?language=en-US");
+  const response = await axios.get("/trending/movie/day?language=en-US");
+  console.log(response);
+
   return response;
+};
+
+export const fetchMovieById = async (id) => {
+  const response = await axios.get(`movie/${id}`);
+  return response.data;
 };
 
 export default fetchMovie;
