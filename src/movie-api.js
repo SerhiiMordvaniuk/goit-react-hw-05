@@ -23,4 +23,9 @@ export const fetchActorById = async (id) => {
   return response.data;
 };
 
+export const fetchReviewById = async (id) => {
+  const response = await axios.get(`movie/${id}/reviews?language=en-US&page=1`);
+  return response.data;
+};
+
 export default fetchMovie;
