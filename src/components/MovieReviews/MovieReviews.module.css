@@ -1,0 +1,20 @@
+.info {
+  text-align: left;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bold {
+  font-weight: 500;
+}

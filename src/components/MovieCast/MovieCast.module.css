@@ -10,3 +10,7 @@
 .bold {
   font-weight: 500;
 }
+
+.info {
+  text-align: left;
+}

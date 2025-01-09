@@ -25,6 +25,8 @@ const MovieCast = () => {
         if (!data) {
           return;
         } else {
+          console.log(data.cast.length);
+
           setActors(data.cast);
         }
       } catch (err) {
@@ -40,25 +42,29 @@ const MovieCast = () => {
     <>
       {loader && <Loader />}
       {error && <ErrorMessage />}
-      <ul className={s.list}>
-        {actors.map((actor, index) => {
-          return (
-            <li key={index} className={s.item}>
-              <img
-                width={60}
-                src={
-                  actor.profile_path
-                    ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
-                    : fakeLogo
-                }
-                alt={actor.name}
-              />
-              <p className={s.bold}>{actor.name}</p>
-              <p>Character: {actor.character}</p>
-            </li>
-          );
-        })}
-      </ul>
+      {actors.length > 1 ? (
+        <ul className={s.list}>
+          {actors.map((actor, index) => {
+            return (
+              <li key={index} className={s.item}>
+                <img
+                  width={60}
+                  src={
+                    actor.profile_path
+                      ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
+                      : fakeLogo
+                  }
+                  alt={actor.name}
+                />
+                <p className={s.bold}>{actor.name}</p>
+                <p>Character: {actor.character}</p>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p className={s.info}>Information about cast not found</p>
+      )}
     </>
   );
 };

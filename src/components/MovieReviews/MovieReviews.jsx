@@ -21,9 +21,7 @@ const MovieReviews = () => {
           return;
         } else {
           setReview(data.results);
-          console.log(data);
-
-          console.log(data.total_results);
+          console.log(data.results);
         }
       } catch (error) {
         console.log(error);
@@ -37,7 +35,22 @@ const MovieReviews = () => {
 
   return (
     <>
-      <p>Movie reviews psge</p>
+      {loader && <Loader />}
+      {error && <ErrorMessage />}
+      {review.length > 0 ? (
+        <ul className={s.list}>
+          {review.map((item, index) => {
+            return (
+              <li key={index} className={s.item}>
+                <p className={s.bold}>{item.author}</p>
+                <p>{item.content}</p>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p className={s.info}>Information about reviews not found</p>
+      )}
     </>
   );
 };
