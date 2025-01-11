@@ -25,12 +25,9 @@ const MovieCast = () => {
         if (!data) {
           return;
         } else {
-          console.log(data.cast.length);
-
           setActors(data.cast);
         }
       } catch (err) {
-        console.log(err);
         setError(true);
       } finally {
         setLoader(false);

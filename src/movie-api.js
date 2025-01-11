@@ -10,6 +10,7 @@ axios.defaults.headers.common["accept"] = "application/json";
 
 const fetchMovie = async () => {
   const response = await axios.get("/trending/movie/day?language=en-US");
+
   return response;
 };
 
@@ -26,6 +27,13 @@ export const fetchActorById = async (id) => {
 export const fetchReviewById = async (id) => {
   const response = await axios.get(`movie/${id}/reviews?language=en-US&page=1`);
   return response.data;
+};
+
+export const fetchMovieByQuery = async (query) => {
+  const response = await axios.get(
+    `/search/movie?query=${query}&include_adult=false&language=en-US&page=1`
+  );
+  return response;
 };
 
 export default fetchMovie;

@@ -21,10 +21,8 @@ const MovieReviews = () => {
           return;
         } else {
           setReview(data.results);
-          console.log(data.results);
         }
       } catch (error) {
-        console.log(error);
         setError(true);
       } finally {
         setLoader(false);
