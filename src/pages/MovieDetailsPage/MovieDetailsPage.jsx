@@ -41,7 +41,7 @@ const MovieDetailsPage = () => {
     <>
       {loader && <Loader />}
       {error && <ErrorMessage />}
-
+      <Link to="/">Go back</Link>
       <div className={s.wrapper}>
         {
           <img
