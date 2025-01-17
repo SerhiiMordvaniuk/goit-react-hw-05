@@ -41,3 +41,15 @@
 .list {
   padding-left: 10px;
 }
+
+.back_btn {
+  text-align: left;
+  padding: 10px;
+}
+.back {
+  color: black;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

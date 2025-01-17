@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import s from "./MoviesPage.module.css";
 import MovieList from "../../components/MovieList/MovieList";
 import { fetchMovieByQuery } from "../../movie-api";
@@ -28,8 +28,11 @@ const MoviesPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setQuery(event.target.elements.query.value.toLowerCase());
-
+    setQuery(event.target.elements.query.value.toLowerCase().trim());
+    updateSearchParams(
+      "query",
+      event.target.elements.query.value.toLowerCase().trim()
+    );
     event.target.elements.query.value = "";
   };
 
@@ -39,7 +42,6 @@ const MoviesPage = () => {
         setQuery(searchQuery);
         return;
       } else {
-        updateSearchParams("query", query);
         setMovieList([]);
         try {
           setLoader(true);
@@ -59,7 +61,7 @@ const MoviesPage = () => {
     }
 
     fetchMovieListByQuery();
-  }, [query]);
+  }, [query, searchQuery]);
 
   return (
     <>

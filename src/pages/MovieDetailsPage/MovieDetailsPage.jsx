@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import s from "./MovieDetailsPage.module.css";
-import { Outlet, useParams, Link } from "react-router-dom";
+import { Outlet, useParams, Link, useLocation } from "react-router-dom";
 import { fetchMovieById } from "../../movie-api";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import { VscArrowLeft } from "react-icons/vsc";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -13,6 +14,10 @@ const MovieDetailsPage = () => {
   const [error, setError] = useState(false);
   const [date, setDate] = useState("");
   const [genres, setGenres] = useState([]);
+
+  const location = useLocation();
+
+  const goBackLink = location.state ?? "/movies";
 
   useEffect(() => {
     async function fetchMovie() {
@@ -28,7 +33,6 @@ const MovieDetailsPage = () => {
           setGenres(data.genres);
         }
       } catch (err) {
-        console.log(err);
         setError(true);
       } finally {
         setLoader(false);
@@ -41,7 +45,12 @@ const MovieDetailsPage = () => {
     <>
       {loader && <Loader />}
       {error && <ErrorMessage />}
-      <Link to="/">Go back</Link>
+      <div className={s.back_btn}>
+        <Link to={goBackLink} className={s.back}>
+          <VscArrowLeft />
+          Go back
+        </Link>
+      </div>
       <div className={s.wrapper}>
         {
           <img
