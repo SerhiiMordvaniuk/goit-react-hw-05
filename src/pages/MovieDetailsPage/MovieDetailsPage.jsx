@@ -14,10 +14,11 @@ const MovieDetailsPage = () => {
   const [error, setError] = useState(false);
   const [date, setDate] = useState("");
   const [genres, setGenres] = useState([]);
-
   const location = useLocation();
 
-  const goBackLink = location.state ?? "/movies";
+  const [prevPage, setPrevPage] = useState(location);
+
+  const goBackLink = prevPage.state ?? "/movies";
 
   useEffect(() => {
     async function fetchMovie() {
