@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import s from "./MovieCast.module.css";
 import { fetchActorById } from "../../movie-api";
 import { useState } from "react";
@@ -12,6 +12,7 @@ const MovieCast = () => {
   const [actors, setActors] = useState([]);
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
+  const [noInfo, setNoInfo] = useState(false);
 
   const fakeLogo =
     "https://img.freepik.com/premium-vector/vector-flat-illustration-avatar-user-profile-person-icon-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-1723.jpg?ga=GA1.1.1021063894.1727605529&semt=ais_hybrid";
@@ -26,6 +27,9 @@ const MovieCast = () => {
           return;
         } else {
           setActors(data.cast);
+          if (data.cast.length === 0) {
+            setNoInfo(true);
+          }
         }
       } catch (err) {
         setError(true);
@@ -60,7 +64,7 @@ const MovieCast = () => {
           })}
         </ul>
       ) : (
-        <p className={s.info}>Information about cast not found</p>
+        noInfo && <p className={s.info}>Information about cast not found</p>
       )}
     </>
   );

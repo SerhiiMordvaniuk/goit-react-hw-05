@@ -10,6 +10,7 @@ const MovieReviews = () => {
   const [review, setReview] = useState([]);
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
+  const [noInfo, setNoInfo] = useState(false);
 
   useEffect(() => {
     const fetchReview = async () => {
@@ -21,6 +22,9 @@ const MovieReviews = () => {
           return;
         } else {
           setReview(data.results);
+          if (data.results.length === 0) {
+            setNoInfo(true);
+          }
         }
       } catch (error) {
         setError(true);
@@ -47,7 +51,7 @@ const MovieReviews = () => {
           })}
         </ul>
       ) : (
-        <p className={s.info}>Information about reviews not found</p>
+        noInfo && <p className={s.info}>Information about reviews not found</p>
       )}
     </>
   );
